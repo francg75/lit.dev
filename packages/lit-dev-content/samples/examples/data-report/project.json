@@ -1,0 +1,10 @@
+{
+  "extends": "/samples/base.json",
+  "title": "Data Report",
+  "description": "Crystal Report-style data report component with grouping, summaries, and export to CSV/JSON/PDF.",
+  "section": "Examples",
+  "files": {
+    "data-report.ts": {},
+    "index.html": {}
+  }
+}
