@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <script type="module" src="./data-report.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f3f4f6;
+    }
+    h2 {
+      color: #1e40af;
+      margin: 24px 0 12px;
+    }
+    data-report {
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Sales Report (Grouped by Region)</h2>
+  <data-report id="salesReport"></data-report>
+
+  <h2>Employee Directory</h2>
+  <data-report id="employeeReport"></data-report>
+
+  <script type="module">
+    // --- Sales Report ---
+    const salesReport = document.getElementById('salesReport');
+    salesReport.reportTitle = 'Quarterly Sales Report';
+    salesReport.subtitle = 'FY 2025 — Q4 Results by Region';
+    salesReport.pageSize = 50;
+    salesReport.groupBy = { key: 'region', label: 'Region' };
+    salesReport.columns = [
+      { key: 'region', label: 'Region', width: '100px' },
+      { key: 'salesperson', label: 'Salesperson', width: '140px' },
+      { key: 'product', label: 'Product' },
+      { key: 'units', label: 'Units', align: 'right', format: 'number', summary: 'sum' },
+      { key: 'revenue', label: 'Revenue', align: 'right', format: 'currency', summary: 'sum' },
+      { key: 'margin', label: 'Margin %', align: 'right', format: 'percent', summary: 'avg' },
+      { key: 'date', label: 'Date', format: 'date' },
+    ];
+    salesReport.data = [
+      { region: 'North', salesperson: 'Alice Johnson', product: 'Widget Pro', units: 150, revenue: 45000, margin: 0.32, date: '2025-10-05' },
+      { region: 'North', salesperson: 'Alice Johnson', product: 'Gadget Plus', units: 80, revenue: 24000, margin: 0.28, date: '2025-10-12' },
+      { region: 'North', salesperson: 'Bob Smith', product: 'Widget Pro', units: 200, revenue: 60000, margin: 0.35, date: '2025-11-03' },
+      { region: 'North', salesperson: 'Bob Smith', product: 'Super Device', units: 45, revenue: 67500, margin: 0.42, date: '2025-11-18' },
+      { region: 'South', salesperson: 'Carlos Ruiz', product: 'Widget Pro', units: 120, revenue: 36000, margin: 0.30, date: '2025-10-08' },
+      { region: 'South', salesperson: 'Carlos Ruiz', product: 'Gadget Plus', units: 95, revenue: 28500, margin: 0.25, date: '2025-10-22' },
+      { region: 'South', salesperson: 'Diana Lee', product: 'Super Device', units: 60, revenue: 90000, margin: 0.45, date: '2025-11-01' },
+      { region: 'South', salesperson: 'Diana Lee', product: 'Widget Pro', units: 180, revenue: 54000, margin: 0.33, date: '2025-11-15' },
+      { region: 'East', salesperson: 'Eve Martinez', product: 'Gadget Plus', units: 110, revenue: 33000, margin: 0.27, date: '2025-10-10' },
+      { region: 'East', salesperson: 'Eve Martinez', product: 'Super Device', units: 35, revenue: 52500, margin: 0.40, date: '2025-10-25' },
+      { region: 'East', salesperson: 'Frank Wilson', product: 'Widget Pro', units: 160, revenue: 48000, margin: 0.31, date: '2025-11-06' },
+      { region: 'East', salesperson: 'Frank Wilson', product: 'Gadget Plus', units: 70, revenue: 21000, margin: 0.26, date: '2025-12-01' },
+      { region: 'West', salesperson: 'Grace Kim', product: 'Super Device', units: 55, revenue: 82500, margin: 0.44, date: '2025-10-15' },
+      { region: 'West', salesperson: 'Grace Kim', product: 'Widget Pro', units: 190, revenue: 57000, margin: 0.34, date: '2025-11-08' },
+      { region: 'West', salesperson: 'Henry Chen', product: 'Gadget Plus', units: 100, revenue: 30000, margin: 0.29, date: '2025-11-20' },
+      { region: 'West', salesperson: 'Henry Chen', product: 'Widget Pro', units: 140, revenue: 42000, margin: 0.31, date: '2025-12-05' },
+    ];
+
+    // --- Employee Directory ---
+    const empReport = document.getElementById('employeeReport');
+    empReport.reportTitle = 'Employee Directory';
+    empReport.subtitle = 'Active Employees — All Departments';
+    empReport.pageSize = 10;
+    empReport.columns = [
+      { key: 'id', label: 'ID', width: '50px', align: 'center' },
+      { key: 'name', label: 'Full Name', width: '160px' },
+      { key: 'department', label: 'Department' },
+      { key: 'position', label: 'Position' },
+      { key: 'salary', label: 'Salary', align: 'right', format: 'currency', summary: 'avg' },
+      { key: 'hireDate', label: 'Hire Date', format: 'date' },
+    ];
+    empReport.data = [
+      { id: 1, name: 'Maria Garcia', department: 'Engineering', position: 'Sr. Developer', salary: 125000, hireDate: '2020-03-15' },
+      { id: 2, name: 'James Brown', department: 'Marketing', position: 'Marketing Lead', salary: 95000, hireDate: '2019-07-22' },
+      { id: 3, name: 'Sarah Davis', department: 'Engineering', position: 'Tech Lead', salary: 145000, hireDate: '2018-01-10' },
+      { id: 4, name: 'Michael Wilson', department: 'Sales', position: 'Account Executive', salary: 85000, hireDate: '2021-05-03' },
+      { id: 5, name: 'Emily Taylor', department: 'HR', position: 'HR Manager', salary: 105000, hireDate: '2019-11-18' },
+      { id: 6, name: 'David Anderson', department: 'Engineering', position: 'DevOps Engineer', salary: 130000, hireDate: '2020-08-25' },
+      { id: 7, name: 'Jennifer Thomas', department: 'Finance', position: 'Controller', salary: 115000, hireDate: '2017-04-12' },
+      { id: 8, name: 'Robert Jackson', department: 'Sales', position: 'Sales Director', salary: 140000, hireDate: '2016-09-30' },
+      { id: 9, name: 'Lisa White', department: 'Marketing', position: 'Content Manager', salary: 88000, hireDate: '2021-02-14' },
+      { id: 10, name: 'Daniel Harris', department: 'Engineering', position: 'Jr. Developer', salary: 80000, hireDate: '2023-01-09' },
+      { id: 11, name: 'Amanda Martin', department: 'HR', position: 'Recruiter', salary: 75000, hireDate: '2022-06-20' },
+      { id: 12, name: 'Christopher Lee', department: 'Finance', position: 'Financial Analyst', salary: 92000, hireDate: '2020-12-01' },
+    ];
+  </script>
+</body>
